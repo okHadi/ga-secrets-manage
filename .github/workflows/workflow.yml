@@ -1,0 +1,32 @@
+name: secrets-manage
+on:
+  push:
+    branches:
+      - main
+jobs:
+  prodjob:
+    name: prodjob
+    runs-on: ubuntu-latest
+    env:
+      AWS_SECRET: ${{ secrets.AWS_PROD_ACCESS }}
+    steps:
+      - name: Test
+        run: echo $AWS_SECRET
+
+  devjob:
+    name: devjob
+    runs-on: ubuntu-latest
+    env:
+      AWS_SECRET: ${{ secrets.AWS_DEV_ACCESS }}
+    steps:
+      - name: Test
+        run: echo $AWS_SECRET
+
+  devjob2:
+    name: devjob2
+    runs-on: ubuntu-latest
+    env:
+      AWS_SECRET: ${{ secrets.AWS_DEV_ACCESS }}
+    steps:
+      - name: Test
+        run: echo $AWS_SECRET
