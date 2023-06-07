@@ -27,6 +27,10 @@ def process_file(file_path):
                 for k in range(linesArr[j]+1, linesArr[j+1]):
                     if "secrets.AWS_PROD_ACCESS" in lines[k]:
                         print("ERROR!!!")
+            else:
+                for l in range(linesArr[j]+1, len(lines)):
+                    if "secrets.AWS_PROD_ACCESS" in lines[l]:
+                        print("ERROR!!!")
 
 
 
