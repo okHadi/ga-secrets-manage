@@ -8,7 +8,7 @@ jobs:
     name: prodjob
     runs-on: ubuntu-latest
     env:
-      AWS_SECRET: ${{ secrets.AWS_DEV_ACCESS }}
+      AWS_SECRET: ${{ secrets.AWS_PROD_ACCESS }}
     steps:
       - name: Test
         run: echo $AWS_SECRET

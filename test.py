@@ -13,11 +13,11 @@ def process_file(file_path):
         lines = file.readlines()
         jobLines = lines[jobsLineNo:]
         for x in range(len(jobLines)):
-            print("line:",jobLines[x])
-            print("line length:",len(jobLines[x]))
-            print("line after strip:", jobLines[x].strip())
-            print("line after strip length:", len(jobLines[x].strip()))
-            print("--------------------")
+            # print("line:",jobLines[x])
+            # print("line length:",len(jobLines[x]))
+            # print("line after strip:", jobLines[x].strip())
+            # print("line after strip length:", len(jobLines[x].strip()))
+            # print("--------------------")
             if (len(jobLines[x]) == len(jobLines[x].strip())+3): #+3, because 2 spaces are added and one space is default in all lines.
                    linesArr.append(jobsLineNo+x)
         for j in range(len(linesArr)):
@@ -26,18 +26,15 @@ def process_file(file_path):
             elif j != len(linesArr)-1:
                 for k in range(linesArr[j]+1, linesArr[j+1]):
                     if "secrets.AWS_PROD_ACCESS" in lines[k]:
-                        print("ERROR!!!")
+                        raise Exception("ERROR: Production secret found in non-prod job")
             else:
                 for l in range(linesArr[j]+1, len(lines)):
                     if "secrets.AWS_PROD_ACCESS" in lines[l]:
-                        print("ERROR!!!")
+                        raise Exception("ERROR: Production secret found in non-prod job")
 
 
 
 
-            
-
-# Replace "folder_path" with the actual path to the ".github" folder
 folder_path = ".github\\workflows"
 
 
