@@ -1,8 +1,9 @@
 import os
 
-lines_to_check = []  # List to store line numbers containing 'jobs:' keyword
+
 
 def process_file(file_path):
+    lines_to_check = []  # List to store line numbers which are job names.
     # Open the file and read its contents
     with open(file_path, 'r') as file:
         lines = file.readlines()
